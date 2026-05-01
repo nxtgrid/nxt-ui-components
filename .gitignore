@@ -1,0 +1,25 @@
+node_modules
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Storybook
+storybook-static
+*storybook.log
+
+# Dependency update process temporary folder
+_old

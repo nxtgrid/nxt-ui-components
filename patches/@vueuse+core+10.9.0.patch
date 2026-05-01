@@ -1,0 +1,48 @@
+diff --git a/node_modules/@vueuse/core/index.mjs b/node_modules/@vueuse/core/index.mjs
+index ab854f8..8b74256 100644
+--- a/node_modules/@vueuse/core/index.mjs
++++ b/node_modules/@vueuse/core/index.mjs
+@@ -238,7 +238,7 @@ function useEventListener(...args) {
+ 
+ let _iOSWorkaround = false;
+ function onClickOutside(target, handler, options = {}) {
+-  const { window = defaultWindow, ignore = [], capture = true, detectIframe = false } = options;
++  const { window = defaultWindow, ignore = [], ignoreDrag = false, capture = true, detectIframe = false } = options;
+   if (!window)
+     return noop;
+   if (isIOS && !_iOSWorkaround) {
+@@ -247,6 +247,18 @@ function onClickOutside(target, handler, options = {}) {
+     window.document.documentElement.addEventListener("click", noop);
+   }
+   let shouldListen = true;
++  let stopDragListener;
++
++  const startDragListener = ({x, y}) => {
++    stopDragListener = useEventListener(window, 'pointermove', (e) => {
++      const dX = Math.abs(x - e.x);
++      const dY = Math.abs(y - e.y);
++      if(dX + dY > 4) {
++        shouldListen = false;
++        stopDragListener && stopDragListener();
++      }
++    });
++  }
+   const shouldIgnore = (event) => {
+     return ignore.some((target2) => {
+       if (typeof target2 === "string") {
+@@ -258,6 +270,7 @@ function onClickOutside(target, handler, options = {}) {
+     });
+   };
+   const listener = (event) => {
++    stopDragListener && stopDragListener();
+     const el = unrefElement(target);
+     if (!el || el === event.target || event.composedPath().includes(el))
+       return;
+@@ -274,6 +287,7 @@ function onClickOutside(target, handler, options = {}) {
+     useEventListener(window, "pointerdown", (e) => {
+       const el = unrefElement(target);
+       shouldListen = !shouldIgnore(e) && !!(el && !e.composedPath().includes(el));
++      if(shouldListen && ignoreDrag) startDragListener(e);
+     }, { passive: true }),
+     detectIframe && useEventListener(window, "blur", (event) => {
+       setTimeout(() => {

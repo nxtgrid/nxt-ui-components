@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+.status-light {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+
+  &--large {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+  }
+
+  &--green {
+    background-color: $nxt-color-success;
+    box-shadow: 0 0 5px $nxt-color-success;
+
+    &.status-light--large {
+      box-shadow: 0 0 10px $nxt-color-success;
+    }
+  }
+
+  &--yellow {
+    background-color: $nxt-color-warn;
+    box-shadow: 0 0 5px $nxt-color-warn;
+
+    &.status-light--large {
+      box-shadow: 0 0 10px $nxt-color-warn;
+    }
+  }
+
+  &--red {
+    background-color: $nxt-color-error;
+    box-shadow: 0 0 5px $nxt-color-error;
+
+    &.status-light--large {
+      box-shadow: 0 0 10px $nxt-color-error;
+    }
+  }
+}
+
+.grid-warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-right: 8px;
+  }
+}
+
+.link-inline {
+  color: $nxt-color-blue-highlight;
+}

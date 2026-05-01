@@ -1,0 +1,72 @@
+@use 'sass:color';
+@use '@nxt/styles/modules/variables' as *;
+
+.mini-cards {
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 16px;
+  padding: 0;
+  list-style: none;
+  grid-auto-rows: 1fr;
+
+  @media(min-width: $ipad-vertical) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(min-width: $macbook-pro) {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 0.5rem;
+    column-gap: 8px;
+  }
+}
+
+.mini-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $nxt-color-background-lightest;
+  padding: 0.75rem 8px 0.25rem;
+  border-radius: 4px;
+  border-top: 0.5rem solid $nxt-color-background-light;
+
+  &--warn {
+    background-color: color.adjust($nxt-color-warn, $lightness: 41%, $space: hsl);
+    border-color: color.adjust($nxt-color-warn, $lightness: 15%, $space: hsl);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    dt {
+      line-height: 1.25;
+    }
+
+    dd {
+      margin: 0.25rem 0 0;
+    }
+  }
+
+  &__pill {
+    position: absolute;
+    right: 8px;
+    top: 0.875rem;
+    font-size: 0.625rem;
+    line-height: 1;
+    color: $nxt-color-font-white;
+    background-color: $nxt-color-blue-highlight;
+    padding: 0.1875rem 8px;
+    border-radius: 8px;
+    font-weight: 700;
+
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.6875rem;
+    line-height: 0.75rem;
+  }
+}

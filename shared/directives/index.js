@@ -1,0 +1,1 @@
+export { NxtTooltip } from './NxtTooltip';

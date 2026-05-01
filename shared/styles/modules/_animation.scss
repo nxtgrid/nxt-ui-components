@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.fade-simple {
+  &-enter-active {
+    transition: opacity 1000ms $ease--out-expo;
+  }
+  &-leave-active {
+    transition: opacity 400ms $ease--smooth-fade;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+.fade-simple-quick {
+  &-enter-active {
+    transition: opacity 400ms ease-out;
+  }
+  &-leave-active {
+    transition: opacity 400ms ease-out;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  animation: rotating 1.4s linear infinite
+}
+
+.rotating-relaxed {
+  animation: rotating 2s linear infinite
+}

@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+.nxt-tooltip {
+  position: fixed;
+  width: max-content;
+  top: 0;
+  left: 0;
+
+  background: $nxt-color-blue;
+  color: $nxt-color-font-white;
+  padding: 0.5rem 8px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  z-index: 5;
+
+  &__arrow {
+    position: absolute;
+    background: $nxt-color-blue;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+  }
+}

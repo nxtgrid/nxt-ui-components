@@ -1,0 +1,49 @@
+diff --git a/node_modules/@vueuse/core/index.mjs b/node_modules/@vueuse/core/index.mjs
+index 4d070f1..e8a5e70 100644
+--- a/node_modules/@vueuse/core/index.mjs
++++ b/node_modules/@vueuse/core/index.mjs
+@@ -231,7 +231,7 @@ function useEventListener(...args) {
+ 
+ let _iOSWorkaround = false;
+ function onClickOutside(target, handler, options = {}) {
+-  const { window = defaultWindow, ignore = [], capture = true, detectIframe = false, controls = false } = options;
++  const { window = defaultWindow, ignore = [], ignoreDrag = false, capture = true, detectIframe = false } = options;
+   if (!window) {
+     return controls ? { stop: noop, cancel: noop, trigger: noop } : noop;
+   }
+@@ -242,6 +242,19 @@ function onClickOutside(target, handler, options = {}) {
+     useEventListener(window.document.documentElement, "click", noop, listenerOptions);
+   }
+   let shouldListen = true;
++  let stopDragListener;
++
++  const startDragListener = ({x, y}) => {
++    stopDragListener = useEventListener(window, 'pointermove', (e) => {
++      const dX = Math.abs(x - e.x);
++      const dY = Math.abs(y - e.y);
++      if(dX + dY > 4) {
++        shouldListen = false;
++        stopDragListener && stopDragListener();
++      }
++    });
++  }
++  
+   const shouldIgnore = (event) => {
+     return toValue(ignore).some((target2) => {
+       if (typeof target2 === "string") {
+@@ -264,6 +277,7 @@ function onClickOutside(target, handler, options = {}) {
+     return children.some((child) => child.el === event.target || event.composedPath().includes(child.el));
+   }
+   const listener = (event) => {
++    stopDragListener && stopDragListener();
+     const el = unrefElement(target);
+     if (event.target == null)
+       return;
+@@ -293,6 +307,7 @@ function onClickOutside(target, handler, options = {}) {
+     useEventListener(window, "pointerdown", (e) => {
+       const el = unrefElement(target);
+       shouldListen = !shouldIgnore(e) && !!(el && !e.composedPath().includes(el));
++      if(shouldListen && ignoreDrag) startDragListener(e);
+     }, { passive: true }),
+     detectIframe && useEventListener(window, "blur", (event) => {
+       setTimeout(() => {

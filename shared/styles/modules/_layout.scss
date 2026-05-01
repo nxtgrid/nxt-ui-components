@@ -1,0 +1,64 @@
+@use 'variables' as *;
+
+.center-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%
+}
+
+.flex-horizontal {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.pull-right {
+  margin-left: auto !important;
+}
+
+.no-shrink {
+  flex-shrink: 0;
+}
+
+.buttons-sbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 8px;
+}
+
+.cards-50-50 {
+  > .card:nth-child(even) {
+    margin-top: 1rem;
+  }
+
+  &__map {
+    height: 300px;
+  }
+
+  @media(min-width: $ipad-vertical) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+
+    > .card {
+      min-width: 0;
+
+      &:nth-child(even) {
+        margin-top: 0;
+      }
+    }
+
+    &__map {
+      min-height: 400px;
+    }
+  }
+}

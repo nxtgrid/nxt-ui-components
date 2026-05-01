@@ -1,0 +1,63 @@
+@use 'variables' as *;
+
+/* Variables */
+$skeleton-element-color: rgba(0, 0, 0, 0.05) !default;
+
+$skeleton-loading-animation-time: 1.3s !default;
+
+/* Animation */
+@keyframes ssc-loading {
+  from {
+      transform: translateX(-100%);
+  }
+  to {
+      transform: translateX(100%);
+  }
+}
+
+/* Animation partial */
+@mixin ssc-animation($on-dark: false, $position: relative) {
+  $shimmer-opacity: 0.4;
+  @if($on-dark) {
+    $shimmer-opacity: 0.1;
+  }
+  display: block;
+  background-color: $skeleton-element-color;
+  position: $position;
+  overflow: hidden;
+
+  &:after {
+      content: "";
+      animation: ssc-loading $skeleton-loading-animation-time infinite;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translateX(-100%);
+      z-index: 1;
+      background: linear-gradient(90deg, transparent, hsla(0, 0%, 100%, $shimmer-opacity), transparent);
+  }
+}
+
+.scc {
+  cursor: progress;
+  user-select: none;
+}
+
+.scc-simple {
+  @include ssc-animation();
+}
+
+.scc-overlay {
+  @include ssc-animation($position: absolute);
+  box-shadow: $sh1;
+}
+
+.scc-card {
+  min-height: 200px;
+  border-radius: 2px;
+  box-shadow: $sh1;
+  
+  @include ssc-animation;
+}

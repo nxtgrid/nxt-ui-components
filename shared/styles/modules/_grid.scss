@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 1rem;
+  column-gap: 16px;
+
+  @media(min-width: $ipad-vertical) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    &__2-columns,
+    &__3-columns {
+      grid-column: span 2;
+    }
+  }
+
+  @media(min-width: $macbook-pro) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    &__3-columns {
+      grid-column: span 3;
+    }
+  }
+}
