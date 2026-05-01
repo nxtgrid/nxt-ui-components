@@ -1,6 +1,6 @@
 # Authors
 
-The following people are the original authors and maintainers of Qilin.
+The following people are the original authors and maintainers of NXT ui components.
 
 | Name | Email |
 |------|-------|

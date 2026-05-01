@@ -5,7 +5,7 @@
       Reset password
     </template>
     <template v-else>
-      Welcome to NXT Grid. Please set your password
+      Welcome to NXT. Please set your password
     </template>
   </h2>
 

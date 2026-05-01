@@ -1,6 +1,6 @@
-# Qilin
+# NXT ui components
 
-Qilin is the **shared front-end component library** for NXT Grid. It provides Vue 3 components, composables, styles, and API integration layers that are used across all NXT Grid front-end applications.
+NXT ui components is the **shared front-end component library** for NXT. It provides Vue 3 components, composables, styles, and API integration layers that are used across all NXT front-end applications.
 
 ## What's Inside
 
@@ -26,23 +26,23 @@ shared/
 | Backend | [Supabase](https://supabase.com/) |
 | Component explorer | [Storybook](https://storybook.js.org/) |
 
-## Using Qilin in a Consumer App
+## Using NXT ui components in a Consumer App
 
 ### Local development
 
-Clone Qilin as a **sibling** of the consuming app and make sure the app's `jsconfig.json` points to `../qilin/shared`:
+Clone `nxt-ui-components` as a **sibling** of the consuming app and make sure the app's `jsconfig.json` points to `../nxt-ui-components/shared`:
 
 ```sh
-git clone https://github.com/nxtgrid/qilin.git ../qilin
+git clone https://github.com/nxtgrid/nxt-ui-components.git ../nxt-ui-components
 ```
 
-The alias is already set up in all NXT Grid apps:
+The alias is already set up in all NXT apps:
 
 ```json
 {
   "compilerOptions": {
     "paths": {
-      "@nxt/*": ["../qilin/shared/*"]
+      "@nxt/*": ["../nxt-ui-components/shared/*"]
     }
   }
 }
@@ -50,16 +50,16 @@ The alias is already set up in all NXT Grid apps:
 
 ### Installing as a git dependency (CI / production)
 
-Add Qilin as an npm dependency pointing to this public repository:
+Add NXT ui components as an npm dependency pointing to this public repository:
 
 ```sh
-npm install nxt-shared@git+https://github.com/nxtgrid/qilin.git
+npm install nxt-shared@git+https://github.com/nxtgrid/nxt-ui-components.git
 ```
 
 Or in `package.json`:
 
 ```json
-"nxt-shared": "git+https://github.com/nxtgrid/qilin.git"
+"nxt-shared": "git+https://github.com/nxtgrid/nxt-ui-components.git"
 ```
 
 ## Prerequisites
@@ -85,7 +85,7 @@ npm run storybook
 
 ## VueUse Patch
 
-Qilin applies a patch to `@vueuse/core` to fix the `onClickOutside` composable. If you use this in a consuming app, copy the `patches/` folder to the consuming app's root and add the following to its `package.json`:
+NXT ui components applies a patch to `@vueuse/core` to fix the `onClickOutside` composable. If you use this in a consuming app, copy the `patches/` folder to the consuming app's root and add the following to its `package.json`:
 
 ```json
 "devDependencies": {
@@ -112,11 +112,11 @@ See [AUTHORS.md](./AUTHORS.md) for the full list of authors and [CONTRIBUTORS.md
 
 ## License
 
-This project is licensed under the [Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/). See [LICENSE](./LICENSE) for the full text.
+This project is licensed under the [Mozilla Public License 2.0 (MPL 2.0)](https://www.mozilla.org/MPL/2.0/). See [LICENSE](./LICENSE) for the full text.
 
 ## Third-party licenses
 
-Source in this repository is under MPL-2.0. **npm dependencies** are under their own licenses. If you ship a bundled app that includes Qilin and its dependency tree, you are responsible for meeting those licenses’ requirements.
+Source in this repository is under the Mozilla Public License 2.0 (MPL 2.0). **npm dependencies** are under their own licenses. If you ship a bundled app that includes NXT ui components and its dependency tree, you are responsible for meeting those licenses' requirements.
 
 Run a full audit locally after `npm install`, for example:
 

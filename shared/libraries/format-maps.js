@@ -47,10 +47,10 @@ export const METER_TYPE_MAP = {
 
 export const ROLE_MAP = {
   SUPERADMIN: {
-    short: 'NXT Grid Staff',
+    short: 'NXT Staff',
   },
   FINANCE: {
-    short: 'NXT Grid Finance',
+    short: 'NXT Finance',
   },
   DEVELOPER: {
     short: 'Developer',

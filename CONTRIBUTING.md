@@ -1,6 +1,6 @@
-# Contributing to Qilin
+# Contributing to NXT ui components
 
-Thank you for your interest in contributing to Qilin. Because Qilin is a shared library consumed by multiple applications, changes here can affect all of them — please read this document carefully before submitting changes.
+Thank you for your interest in contributing to NXT ui components. Because NXT ui components is a shared library consumed by multiple applications, changes here can affect all of them — please read this document carefully before submitting changes.
 
 ## Prerequisites
 
@@ -9,8 +9,8 @@ Thank you for your interest in contributing to Qilin. Because Qilin is a shared 
 ## Setting Up
 
 ```sh
-git clone https://github.com/nxtgrid/qilin.git
-cd qilin
+git clone https://github.com/nxtgrid/nxt-ui-components.git
+cd nxt-ui-components
 nvm use
 npm install
 npm run storybook   # explore and develop components in isolation
@@ -18,7 +18,7 @@ npm run storybook   # explore and develop components in isolation
 
 ## Scope of Changes
 
-Qilin provides components, composables, and libraries shared across all NXT Grid front-end apps. When contributing:
+NXT ui components provides components, composables, and libraries shared across all NXT front-end apps. When contributing:
 
 - **Components** live in `shared/components/`. They should be generic enough to be useful across apps without hard-coded app-specific logic.
 - **Composables** live in `shared/composables/`. Keep them focused on a single concern.
@@ -49,7 +49,7 @@ This project uses [ESLint](https://eslint.org/). All staged files are linted aut
 
 ## VueUse Patch
 
-Qilin maintains a `patch-package` patch for `@vueuse/core`. If your change modifies how `@vueuse/core` is used, verify the patch in `patches/` is still correct and update it if needed.
+NXT ui components maintains a `patch-package` patch for `@vueuse/core`. If your change modifies how `@vueuse/core` is used, verify the patch in `patches/` is still correct and update it if needed.
 
 ## Commit Messages
 

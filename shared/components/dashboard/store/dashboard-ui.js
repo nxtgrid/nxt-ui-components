@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useTitle } from '@vueuse/core';
 
-const titleTemplate = `%s | ${ window.BRAND?.name ?? 'NXT Grid' }`;
+const titleTemplate = `%s | ${ window.BRAND?.name ?? 'NXT' }`;
 const _pageTitle = useTitle('Dashboard', { titleTemplate });
 
 export const useDashboardUiStore = defineStore('dashboard-ui', {

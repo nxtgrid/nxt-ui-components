@@ -1,6 +1,6 @@
 # Contributors
 
-Thank you to everyone who has contributed to Qilin.
+Thank you to everyone who has contributed to NXT ui components.
 
 | Name | Email |
 |------|-------|
